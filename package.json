@@ -1,6 +1,6 @@
 {
   "name": "mmb-youtube-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A angular service to fetch channel youtube videos and playlist",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

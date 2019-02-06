@@ -5,11 +5,11 @@ import { YoutubeConfigService } from './youtube-config.service';
 
 
 @NgModule()
-export class ContentfulModule {
+export class YoutubeModule {
 
   static forRoot(config: YoutubeConfig): ModuleWithProviders {
     return {
-      ngModule: ContentfulModule,
+      ngModule: YoutubeModule,
       providers: [
         YoutubeService,
         {

@@ -1,3 +1,2 @@
-export * from './my-module.module';
-export * from './components/my-component';
-export * from './providers/my-provider';
+export * from './youtube.service';
+export * from './youtube-config.service';

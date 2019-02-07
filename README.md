@@ -1,46 +1,105 @@
-# Ionic Module Template
+# mmb-youtube-provider
 
-This is a template for building your own reusable Angular2/Ionic2 module using TypeScript. Supports Angular's ngc and Ahead-of-Time compiling out of the box.
+A angular service to fetch Youtube channel videos, playlists and latest videos.
 
-## Developing
+## Dependencies
+- apiKey: YouTube Data API v3 key, generated [here](https://console.developers.google.com/apis/library/youtube.googleapis.com)
+- apiURL: `https://www.googleapis.com/youtube/v3`
 
-Develop your module like any other Angular 2 module. Then, run `npm run build` to build a local copy.
 
-When you're ready to publish to npm, run `npm publishPackage`.
+## Installation
+```bash
+$ npm install mmb-youtube-provider --save
+```
 
-If you'd like to test this package, run `npm install ionic-module-template`
-
-## npm link
-
-Currently, modules must be published to npm. `npm link` packages will not install properly with our webpack confing (something on our list). If you can't push private code to npm, other options are a private npm repo/npm enterprise, or `npm install` from a git repo.
-
-## Using your module in an Ionic 2 app
-
-```typescript
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-
-// Import your module
-import { MyModule } from 'ionic-module-template';
+## Use 
+On app.module.js
+```ts
+...
+import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
+  declarations: [...],
   imports: [
-    IonicModule.forRoot(MyApp),
-
-    MyModule // Put your module here
+      YoutubeModule.forRoot(
+      {
+        apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        apiURL: 'https://www.googleapis.com/youtube/v3'
+      }
+    ),
+    ...
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
-  providers: []
+  bootstrap: [...],
+  entryComponents: [...],
+  providers: [
+    YoutubeService,
+    ...
+  ]
 })
 export class AppModule {}
 ```
+your-component.module.ts
+```ts
+...
+import { YoutubeService } from 'mmb-youtube-provider';
+
+@NgModule({
+  declarations: [...],
+  imports: [...],
+  providers: [
+    YoutubeService,
+    ...
+  ]
+})
+export class YoutComponentModule {}
+```
+you-component.ts
+```ts
+...
+import { YoutubeService } from 'mmb-youtube-provider';
+@Component({
+  selector: 'your-component',
+  templateUrl: 'your-component',
+})
+export class YoutComponent  {
+
+  constructor(
+    private youtubeService: YoutubeService,
+    ...
+  ) {}
+
+  fetchPlaylists(channelId: string) {
+    this.youtubeService.fetchPlaylists(channelId)
+    .then(
+      data => console.log(data)
+    );
+  }
+
+  fetchVideos(channelId: string, playlistId: string) {
+    this.youtubeService.fetchVideos(channelId, playlistId)
+    .then(
+      data => console.log(data)
+    );
+  }
+
+}
+```
+
+## Functions
+### fetchPlaylists
+It returns an array of all channel playlists.  
+If there is no playlist it returns `[]`
+`this.youtubeService.fetchPlaylists(channelId)`
+- channelId: string like `UCZZPgUIorPao48a1tBYSDgg`  
+Playlist [Object](https://developers.google.com/youtube/v3/docs/playlists)
+
+
+### fetchVideos
+It returns an array of the latest 20 playlist vides.   
+If not pass a playlistId, it returns the latest 20 channel videos.  
+If there is no video on channel/playlist it returns `[]`.  
+`this.youtubeService.fetchVideos(channelId, playlistId)`
+- channelId: string like `UCZZPgUIorPao48a1tBYSDgg`  
+- playlistId: string like `PLNFwX8PVq5q6CHLk0tLCiyh96nALzi3_x`
+
+Video [Object](https://developers.google.com/youtube/v3/docs/videos)

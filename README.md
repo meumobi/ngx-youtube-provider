@@ -1,4 +1,4 @@
-# mmb-youtube-provider
+# @meumobi/ngx-youtube-provider
 
 A angular service to fetch Youtube channel videos, playlists and latest videos.
 
@@ -9,14 +9,14 @@ A angular service to fetch Youtube channel videos, playlists and latest videos.
 
 ## Installation
 ```bash
-$ npm install mmb-youtube-provider --save
+$ npm install @meumobi/ngx-youtube-provider --save
 ```
 
 ## Use 
 On app.module.js
 ```ts
 ...
-import { YoutubeService, YoutubeModule } from 'mmb-youtube-provider';
+import { YoutubeService, YoutubeModule } from '@meumobi/ngx-youtube-provider';
 
 @NgModule({
   declarations: [...],
@@ -41,7 +41,7 @@ export class AppModule {}
 your-component.module.ts
 ```ts
 ...
-import { YoutubeService } from 'mmb-youtube-provider';
+import { YoutubeService } from '@meumobi/ngx-youtube-provider';
 
 @NgModule({
   declarations: [...],
@@ -56,7 +56,7 @@ export class YoutComponentModule {}
 you-component.ts
 ```ts
 ...
-import { YoutubeService } from 'mmb-youtube-provider';
+import { YoutubeService } from '@meumobi/ngx-youtube-provider';
 @Component({
   selector: 'your-component',
   templateUrl: 'your-component',

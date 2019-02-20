@@ -1,6 +1,6 @@
 {
   "name": "@meumobi/ngx-youtube-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A angular service to fetch channel youtube videos and playlist",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -15,15 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meumobi/mmb-youtube-provider.git"
+    "url": "git+https://github.com/meumobi/ngx-youtube-provider.git"
   },
-  "keywords": [],
+  "keywords": [
+    "youtube", "angular", "ngx", "meumobi", "video", "youtube-api", "youtube-channel"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/meumobi/mmb-youtube-provider/issues"
+    "url": "https://github.com/meumobi/ngx-youtube-provider/issues"
   },
-  "homepage": "https://github.com/meumobi/mmb-youtube-provider/issues#readme",
+  "homepage": "https://github.com/meumobi/ngx-youtube-provider/issues#readme",
   "devDependencies": {
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
